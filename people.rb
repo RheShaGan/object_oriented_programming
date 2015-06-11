@@ -1,7 +1,7 @@
 class Person
 	attr_accessor :name
 
-	def initializer(name) #code still worked without this, why?
+	def initialize(name) #code still worked without this, why?
 		@name = name
 	end
 
@@ -24,13 +24,11 @@ class Instructor < Person
 	end
 end
 
-instructor = Instructor.new
-instructor.name = "Chris"
+instructor = Instructor.new("Chris")
 puts instructor.greeting
 puts instructor.teach
 
-student = Student.new
-student.name = "Cristina"
+student = Student.new "Cristina"
 puts student.greeting
 puts student.learn
 
