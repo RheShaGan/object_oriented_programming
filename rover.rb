@@ -1,19 +1,31 @@
 class Rover
 	attr_reader :x, :y, :direction
 
-  # def x=(val)
-  #   @x = val
-  # end
-
-  # def x
-  #   @val
-  # end
-
 	def initialize(x, y, direction)
 		@x = x
 		@y = y
 		@direction = direction
-	end
+  end
+
+  # def set_initial_position
+  #   print "Please enter Rover's initial position e.g 2 1 N >"
+  #   position = gets.chomp
+  #   position_array = position.split(" ")
+
+  #   x = position_array[0].to_i
+
+  #   y = position_array[1].to_i
+
+  #   direction = position_array[2].to_sym
+
+  #   puts "<Rover: #{x},#{y} facing #{direction}>"
+    
+  # end
+
+  #def print_rover_position(x, y, direction)
+    #rover = Rover.new(x, y, direction)
+    #puts "<Rover: #{x},#{y} facing #{direction}>"
+  #end
 
   def move
     if @direction == :N
@@ -25,15 +37,11 @@ class Rover
     else @direction == :W
       @x -= 1
     end
-        
-
-
   end
 
   def turn(l_or_r)
     dir_array = [:N, :E, :S, :W]
  
-
     direction_index = dir_array.index(@direction)
 
     if l_or_r == :L
@@ -42,6 +50,7 @@ class Rover
       else direction_index == 0
         direction_index = 3
       end
+
     elsif l_or_r == :R
       if direction_index < 3
         direction_index += 1
@@ -49,6 +58,7 @@ class Rover
         direction_index =0
       end
     end
+
     @direction = dir_array[direction_index]
   end
 
@@ -58,25 +68,7 @@ class Rover
     else instr == :L || instr == :R
       turn(instr)
     end
-
-      
-
-
-
   end
-
-  # def set_xy(x, y)
-  #   # @x, @y = x, y
-  #   @x = x
-  #   @y = y
-  # end
-
-  # def xy=(array)
-  #   # @x, @y = x, y
-  #   @x, @y = array
-  #   a,b,c = [1,2,3]
-  #   x, y = [y, x]
-  # end
 
   def to_s
     "<Rover: #{x},#{y} facing #{direction}>"
@@ -84,7 +76,19 @@ class Rover
 
 end
 
-r = Rover.new(1,1,:N)
+print "Please enter Rover's initial position e.g 2 1 N >"
+    position = gets.chomp
+    position_array = position.split(" ")
+
+    x = position_array[0].to_i
+
+    y = position_array[1].to_i
+
+    direction = position_array[2].to_sym
+
+    puts "<Rover: #{x},#{y} facing #{direction}>"
+
+r = Rover.new(x,y,direction)
 
 puts "Please enter movement direction: "
 
@@ -96,13 +100,5 @@ user_array.each do | letter |
   r.read_instruction(letter.to_sym)
 end
 
-puts r
-# r.read_instruction(:M)
-# r.read_instruction(:L)
-# r.read_instruction(:M)
-# r.read_instruction(:L)
+puts r.to_s
 
-# r.x = 5
-# r.y = 10
-# r.set_xy(5,10)
-# r.xy = [5, 10]

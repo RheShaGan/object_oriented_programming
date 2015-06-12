@@ -32,5 +32,4 @@ student = Student.new "Cristina"
 puts student.greeting
 puts student.learn
 
-puts student.teach #this doesn't work because the student object doesn't inherit from the Instructor class. 
 
